@@ -1,0 +1,48 @@
+RewriteOptions inherit
+<IfModule mod_rewrite.c>
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+ErrorDocument 404 /404.php
+RewriteRule ^p/(.*)/(.*)$ ?do=$1&id=$2 [QSA]
+RewriteRule ^p/(.*)$ ?do=$1 [QSA]
+
+RewriteRule ^rss.xml /dq-content/sitemap/rss.php [L]
+RewriteRule ^sitemap.xml /dq-content/sitemap/sitemap.php [L]
+RewriteRule ^sitemap-post.xml /dq-content/sitemap/sitemap-post.php [L]
+RewriteRule ^sitemap-category.xml /dq-content/sitemap/sitemap-category.php [L]
+RewriteRule ^sitemap-misc.xml /dq-content/sitemap/sitemap-misc.php [L]
+RewriteRule ^sitemap-(.*).xml /dq-content/sitemap/sitemap-other.php?type=$1 [L]
+
+RewriteRule ^rc ?do=redirect [QSA]
+RewriteRule ^books-newrelease ?get=books-newrelease [QSA]
+RewriteRule ^books-mostread ?get=books-mostread [QSA]
+RewriteRule ^books-popular ?get=books-popular [QSA]
+RewriteRule ^books-author ?get=books-author [QSA]
+RewriteRule ^browse ?get=browse [QSA]
+RewriteRule ^404 ?do=404 [QSA]
+RewriteRule ^genre/(.*)(\/|)?$ ?get=genre_books&title=$1 [L]
+RewriteRule ^list/([0-9]+)/(.*)$ ?get=list_books&id=$1&title=$2 [L]
+RewriteRule ^book/([0-9]+)/(.*)$ ?do=book&id=$1&title=$2 [L]
+RewriteRule ^desc/([0-9]+)/(.*)$ ?do=desc&id=$1&title=$2 [L]
+RewriteRule ^desc/([0-9]+)(\/|)$ ?do=desc&id=$1 [L]
+RewriteRule ^books/([0-9]+)/(.*)$ ?do=books&id=$1&title=$2 [L]
+RewriteRule ^books/([0-9]+)(\/|)$ ?do=books&id=$1 [L]
+RewriteRule ^read/([0-9]+)/(.*)$ ?do=read&id=$1&title=$2 [L]
+RewriteRule ^read/([0-9]+)(\/|)$ ?do=read&id=$1 [L]
+RewriteRule ^author/([0-9]+)/(.*)$ ?get=author&id=$1&title=$2 [L]
+RewriteRule ^author/([0-9]+)(\/|)$ ?get=author&id=$1 [L]
+RewriteRule ^search/(.*)$ ?do=search&s=$1 [QSA]
+RewriteRule ^([0-9]+)$ ?do=index&id=$1 [QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(\/|) ?do=index [QSA]
+</IfModule>
+
+## STOP REFERRER SPAM
+RewriteCond %{HTTP_REFERER} success\-seo\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} semalt\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} best\-seo\-solution\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} best\-seo\-offer\.com [NC]
+RewriteRule .* - [F]
