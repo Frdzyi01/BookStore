@@ -166,16 +166,16 @@ if ($bookRequested) {
 
             <div class="isotope-container row">
                 <?php
-                $count = 0; // Inisialisasi penghitung
+                $count = 0;
                 foreach ($bestSellers as $item) :
                     if ($count >= 4) {
-                        break; // Keluar dari loop setelah menampilkan 4 buku
+                        break;
                     }
                 ?>
                     <div class="item col-md-4 col-lg-3 my-4">
                         <div class="card position-relative">
                             <a href="<?php echo seobooks($item['id'], $item['title']); ?>">
-                                <img src="<?php echo $item['poster']; ?>" class="img-fluid rounded-4" alt="<?php echo $item['title']; ?>" />
+                                <img src="<?php echo $item['poster']; ?>" class="img-fluid rounded-4 w-100" style="height: 400px; object-fit: cover;" alt="<?php echo $item['title']; ?>" />
                             </a>
                             <div class="card-body p-0">
                                 <a href="<?php echo seobooks($item['id'], $item['title']); ?>">
@@ -183,15 +183,15 @@ if ($bookRequested) {
                                 </a>
                                 <div class="card-text">
                                     <span class="rating secondary-font">
-                                        <!-- Kode untuk menampilkan rating (jika ada) -->
                                     </span>
                                     <h3 class="secondary-font text-primary"><?php echo $item['author']; ?></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 <?php
-                    $count++; // Increment penghitung
+                    $count++;
                 endforeach;
                 ?>
             </div>
@@ -204,85 +204,75 @@ if ($bookRequested) {
                 <h2 class="display-3 fw-normal">Menampilkan buku new releases</h2>
             </div>
 
+            <div class="isotope-container row">
+                <?php
+                $count = 0;
+                foreach ($newReleases as $item) :
+                    if ($count >= 4) {
+                        break;
+                    }
+                ?>
+                    <div class="item col-md-4 col-lg-3 my-4">
+                        <div class="card position-relative">
+                            <a href="<?php echo seobooks($item['id'], $item['title']); ?>">
+                                <img src="<?php echo $item['poster']; ?>" class="img-fluid rounded-4 w-100" style="height: 400px; object-fit: cover;" alt="<?php echo $item['title']; ?>" />
+                            </a>
+                            <div class="card-body p-0">
+                                <a href="<?php echo seobooks($item['id'], $item['title']); ?>">
+                                    <h3 class="card-title pt-4 m-0"><?php echo $item['title']; ?></h3>
+                                </a>
+                                <div class="card-text">
+                                    <span class="rating secondary-font">
+                                    </span>
+                                    <h3 class="secondary-font text-primary"><?php echo $item['author']; ?></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                    $count++;
+                endforeach;
+                ?>
+            </div>
+
+
             <!-- menampilkan buku most read -->
             <div class="section-header d-md-flex justify-content-between align-items-center">
                 <h2 class="display-3 fw-normal">Menampilkan buku most read</h2>
             </div>
 
-        </div>
-    </section>
-
-    <section id="banner" style="background: #f9f3ec">
-        <div class="container">
-            <div class="swiper main-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide py-5">
-                        <div class="row banner-content align-items-center">
-                            <div class="img-wrapper col-md-5">
-                                <img src="images/banner-img.png" class="img-fluid" />
-                            </div>
-                            <div class="content-wrapper col-md-7 p-5 mb-5">
-                                <div class="secondary-font text-primary text-uppercase mb-4">
-                                    Save 10 - 20 % off
+            <div class="isotope-container row">
+                <?php
+                $count = 0;
+                foreach ($mostRead as $item) :
+                    if ($count >= 4) {
+                        break;
+                    }
+                ?>
+                    <div class="item col-md-4 col-lg-3 my-4">
+                        <div class="card position-relative">
+                            <a href="<?php echo seobooks($item['id'], $item['title']); ?>">
+                                <img src="<?php echo $item['poster']; ?>" class="img-fluid rounded-4 w-100" style="height: 400px; object-fit: cover;" alt="<?php echo $item['title']; ?>" />
+                            </a>
+                            <div class="card-body p-0">
+                                <a href="<?php echo seobooks($item['id'], $item['title']); ?>">
+                                    <h3 class="card-title pt-4 m-0"><?php echo $item['title']; ?></h3>
+                                </a>
+                                <div class="card-text">
+                                    <span class="rating secondary-font">
+                                    </span>
+                                    <h3 class="secondary-font text-primary"><?php echo $item['author']; ?></h3>
                                 </div>
-                                <h2 class="banner-title display-1 fw-normal">
-                                    Best destination for
-                                    <span class="text-primary">your pets</span>
-                                </h2>
-                                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                                    shop now
-                                    <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                                        <use xlink:href="#arrow-right"></use>
-                                    </svg></a>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide py-5">
-                        <div class="row banner-content align-items-center">
-                            <div class="img-wrapper col-md-5">
-                                <img src="images//banner-img3.png" class="img-fluid" />
-                            </div>
-                            <div class="content-wrapper col-md-7 p-5 mb-5">
-                                <div class="secondary-font text-primary text-uppercase mb-4">
-                                    Save 10 - 20 % off
-                                </div>
-                                <h2 class="banner-title display-1 fw-normal">
-                                    Best destination for
-                                    <span class="text-primary">your pets</span>
-                                </h2>
-                                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                                    shop now
-                                    <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                                        <use xlink:href="#arrow-right"></use>
-                                    </svg></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide py-5">
-                        <div class="row banner-content align-items-center">
-                            <div class="img-wrapper col-md-5">
-                                <img src="images/banner-img4.png" class="img-fluid" />
-                            </div>
-                            <div class="content-wrapper col-md-7 p-5 mb-5">
-                                <div class="secondary-font text-primary text-uppercase mb-4">
-                                    Save 10 - 20 % off
-                                </div>
-                                <h2 class="banner-title display-1 fw-normal">
-                                    Best destination for
-                                    <span class="text-primary">your pets</span>
-                                </h2>
-                                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
-                                    shop now
-                                    <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
-                                        <use xlink:href="#arrow-right"></use>
-                                    </svg></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-pagination mb-5"></div>
+                <?php
+                    $count++;
+                endforeach;
+                ?>
             </div>
+
+
         </div>
     </section>
 
