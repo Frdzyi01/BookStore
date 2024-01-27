@@ -12,11 +12,9 @@
                     </a>
                     <div class="card-text">
                         <span class="rating secondary-font">
-                            <!-- Tempat untuk Rating Bintang, sesuaikan dengan data Anda -->
                         </span>
                         <h3 class="secondary-font text-primary"><?php echo $item['author']; ?></h3>
-                        <!-- Harga bisa dihapus jika tidak diperlukan -->
-                        <!-- Tombol Add to Cart dan Wishlist juga bisa dihapus jika tidak diperlukan -->
+
                     </div>
                 </div>
             </div>
