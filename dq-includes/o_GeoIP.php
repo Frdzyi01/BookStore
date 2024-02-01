@@ -361,9 +361,14 @@ function geoip_open($filename, $flags)
 }
 function geoip_country_id_by_addr($gi, $addr)
 {
-  $ipnum = ip2long($addr);
-  return _geoip_seek_country($gi, $ipnum) - GEOIP_COUNTRY_BEGIN;
+  if (isset($addr) && !empty($addr)) {
+    $ipnum = ip2long($addr);
+    return _geoip_seek_country($gi, $ipnum) - GEOIP_COUNTRY_BEGIN;
+  } else {
+    return false;
+  }
 }
+
 function _geoip_seek_country($gi, $ipnum)
 {
   $offset = 0;
@@ -415,14 +420,14 @@ function _geoip_seek_country($gi, $ipnum)
 }
 function geoip_country_code_by_addr($gi, $addr)
 {
-
   $country_id = geoip_country_id_by_addr($gi, $addr);
-  if ($country_id !== false) {
+  if ($country_id !== false && isset($gi->GEOIP_COUNTRY_CODES[$country_id])) {
     return $gi->GEOIP_COUNTRY_CODES[$country_id];
+  } else {
+    return false; // Tidak ada kode negara yang ditemukan atau alamat kosong
   }
-
-  return false;
 }
+
 
 function WPGeoIP_getIPs()
 {

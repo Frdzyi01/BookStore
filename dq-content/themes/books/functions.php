@@ -197,7 +197,7 @@ function deqila_data_genres($nama = '', $page = '')
         return serialize($results);
     }
 }
-if ($_GET['do'] == "book") {
+if (isset($_GET['do']) && $_GET['do'] == "book" && isset($_GET['id'])) {
     $BooksID = $_GET['id'];
     $arraygr = explode(",", $options['Goodread_api']);
     $apikey = $arraygr[array_rand($arraygr)];
@@ -304,7 +304,7 @@ if ($_GET['do'] == "book") {
     $hack_description = $options['title_books_before'] . $single['title'] . ' By ' . $item['authorname'] . $options['title_books_after'] . ' - ' . $options['webname'];
     $hack_keywords = $item['title'] . ', ' . $item['authorname'] . ', ' . $options['webkeywords'];
 }
-if ($_GET['do'] == "read") {
+if (isset($_GET['do']) && $_GET['do'] == "read" && isset($_GET['id'])) {
     $BooksID = $_GET['id'];
     $arraygr = explode(",", $options['Goodread_api']);
     $apikey = $arraygr[array_rand($arraygr)];
@@ -402,7 +402,7 @@ if ($_GET['do'] == "read") {
     $hack_description = $options['title_books_before'] . $single['title'] . ' By ' . $item['authorname'] . $options['title_books_after'] . ' - ' . $options['webname'];
     $hack_keywords = $item['title'] . ', ' . $item['authorname'] . ', ' . $options['webkeywords'];
 }
-if ($_GET['do'] == "books") {
+if (isset($_GET['do']) && $_GET['do'] == "books" && isset($_GET['id'])) {
     $BooksID = $_GET['id'];
     $arraygr = explode(",", $options['Goodread_api']);
     $apikey = $arraygr[array_rand($arraygr)];
@@ -499,7 +499,7 @@ if ($_GET['do'] == "books") {
     $hack_description = $options['title_books_before'] . $single['title'] . ' By ' . $item['authorname'] . $options['title_books_after'] . ' - ' . $options['webname'];
     $hack_keywords = $item['title'] . ', ' . $item['authorname'] . ', ' . $options['webkeywords'];
 }
-if ($_GET['do'] == "desc") {
+if (isset($_GET['do']) && $_GET['do'] == "desc" && isset($_GET['id'])) {
     $BooksID = $_GET['id'];
     $arraygr = explode(",", $options['Goodread_api']);
     $apikey = $arraygr[array_rand($arraygr)];
@@ -596,7 +596,7 @@ if ($_GET['do'] == "desc") {
     $hack_description = $options['title_books_before'] . $single['title'] . ' By ' . $item['authorname'] . $options['title_books_after'] . ' - ' . $options['webname'];
     $hack_keywords = $item['title'] . ', ' . $item['authorname'] . ', ' . $options['webkeywords'];
 }
-if ($_GET['get'] == "author") {
+if (isset($_GET['get']) && $_GET['get'] == "author" && isset($_GET['id'])) {
     $BooksID = $_GET['id'];
     $arraygr = explode(",", $options['Goodread_api']);
     $apikey = $arraygr[array_rand($arraygr)];
